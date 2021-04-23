@@ -54,7 +54,7 @@ class AStar(BestFirstSearch):
         if self.heuristic_function is None:
             return (1 - w) * search_node.g_cost
 
-        return (1 - w) * search_node.g_cost + w * self.heuristic_function.estimate(search_node.state)
+        return (1 - w) * search_node.g_cost + w * self.heuristic_function.estimate(state=search_node.state)
 
     def _open_successor_node(self, problem: GraphProblem, successor_node: SearchNode):
         """

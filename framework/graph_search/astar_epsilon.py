@@ -87,8 +87,8 @@ class AStarEpsilon(AStar):
                     focal_list.append(node_to_focal)
             best_nodes = [focal_function(node, problem, self) for node in focal_list]
             index = np.argmin(best_nodes)
-            node_to_return = focal_list[index]
-            del focal_list[index]
+            node_to_return = focal_list[index[0]]
+            del focal_list[index[0]]
             for node in focal_list:
                 self.open.push_node(node)
             self.close.add_node(node_to_return)
