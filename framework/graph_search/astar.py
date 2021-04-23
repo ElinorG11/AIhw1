@@ -75,7 +75,7 @@ class AStar(BestFirstSearch):
         if node is None:  # meaning that we haven't opened this node yet
             node = self.close.get_node_by_state(successor_node.state)
             if node is None:  # meaning we haven't closed the node yet
-                self.open.push_node()
+                self.open.push_node(successor_node)
             else:  # meaning the node is already closed
                 if successor_node.g_cost < node.g_cost:  # we reopen the node with improved g_cost
                     self.close.remove_node(node)
