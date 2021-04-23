@@ -84,7 +84,7 @@ class MapProblem(GraphProblem):
         #                   Note: the result should be of type np.array.
         #                           you can convert a pd.DataFrame to np.array using pd.DataFrame.to_numpy()
         days_of_the_week = ['Sun', 'Mon', 'Tue', 'Wed']  # optional variable
-        """
+
         junction = self.streets_map[self.target_junction_id]
 
         path_name = 'history_4_days_target_' + str(self.target_junction_id) + '.csv'
@@ -106,13 +106,13 @@ class MapProblem(GraphProblem):
             # note: you can extract the data of a single column named 'name' from a pd.DataFrame 'df' by: df['name']
             data = df[str(link.source), ].to_numpy()
 
-            mean_value = pd.DataFrame.mean(axis=1)  # calculate mean & assign the data
+            mean_value = data.mean(axis=1)  # calculate mean & assign the data
 
             self.time_to_goal_history_based_data += mean_value
 
         assert(type(self.time_to_goal_history_based_data) is np.ndarray)  # self-check
-        """
-        raise NotImplementedError
+
+
 
     def expand_state_with_costs(self, state_to_expand: GraphProblemState) -> Iterator[OperatorResult]:
         """

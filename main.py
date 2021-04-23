@@ -158,7 +158,7 @@ def map_problem_experiments():
     # TODO [Ex.18]: create an instance of `AStar` with the `TimeBasedAirDistHeuristic`,
     #       and use the default value for the heuristic_weight,  
     #       solve the same `map_problem` with it and print the results (as before).
-    exit()  # TODO: remove!
+    #exit()  # TODO: remove!
 
     # TODO [Ex.20]:
     #  1. Complete the implementation of the function
@@ -181,7 +181,6 @@ def map_problem_experiments():
     res = Astar.solve_problem(dist_map_problem)
     print(res)
 
-    
     # TODO [Ex.25]: 1. Call the function set_additional_history_based_data()
     #                   to set the additional history-based data in `map_problem`.
     #                   For more info see `problems/map_problem.py`.
