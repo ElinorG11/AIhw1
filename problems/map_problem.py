@@ -38,7 +38,7 @@ class MapProblem(GraphProblem):
 
     name = 'StreetsMap'
 
-    def __init__(self, streets_map: StreetsMap, source_junction_id: int, target_junction_id: int, cost_func_name:str):
+    def __init__(self, streets_map: StreetsMap, source_junction_id: int, target_junction_id: int, cost_func_name: str):
         initial_state = MapState(source_junction_id)
         super(MapProblem, self).__init__(initial_state)
         self.streets_map = streets_map
@@ -48,7 +48,7 @@ class MapProblem(GraphProblem):
         self.cost_func_name = cost_func_name
         self.time_to_goal_shortest_paths_based_data = None
         self.time_to_goal_history_based_data = None
-    
+
     def set_additional_shortest_paths_based_data(self):
         # [Ex.24]: Don't edit this function! It just gives you more info.
         #           This function loads the shortest paths data from a csv file.
@@ -57,21 +57,21 @@ class MapProblem(GraphProblem):
 
         # set the data file path
         shortest_paths_file_path = os.path.join(Consts.DATA_PATH, 'shortest_paths.csv')
-        
+
         # read the csv file
-        df = pd.read_csv(shortest_paths_file_path) 
-        
+        df = pd.read_csv(shortest_paths_file_path)
+
         # self-check, if the data file includes self.target_junction_id 
-        assert(str(self.target_junction_id) in df.columns)
+        assert (str(self.target_junction_id) in df.columns)
 
         # extract the data matching to self.target_junction_id and convert to np.array.
         # note: you can extract the data of a single column named 'name' from a pd.DataFrame 'df' by: df['name']
         data = df[str(self.target_junction_id)].to_numpy()
-        
+
         self.time_to_goal_shortest_paths_based_data = data  # assign the data
 
     def set_additional_history_based_data(self):
-        #TODO [Ex.25]: Load additional history-based data and assign it to a class variable:
+        # TODO [Ex.25]: Load additional history-based data and assign it to a class variable:
         #               (1) Load the csv file history_4_days_target_{target_id}.csv to a pd.DataFrame (pandas dataframe).
         #                   Its parent folder is framework/db/ which is the same as the parent folder of shortest_paths.csv.
         #                   Use the code in self.set_additional_shortest_paths_based_data() for help!
@@ -95,24 +95,11 @@ class MapProblem(GraphProblem):
         # read the csv file
         df = pd.read_csv(history_4_days_target_file_path)
 
-        # self-check, if the data file includes self.target_junction_id
-        assert (str(self.target_junction_id) in df.columns)
+        mean_value = df.mean(axis=1)  # calculate mean & assign the data
 
-        mean_value = None
+        self.time_to_goal_history_based_data = pd.DataFrame.to_numpy(mean_value)
 
-        for link in junction.incoming_links:
-
-            # extract the data matching to each day and convert to np.array.
-            # note: you can extract the data of a single column named 'name' from a pd.DataFrame 'df' by: df['name']
-            data = df[str(link.source), ].to_numpy()
-
-            mean_value = data.mean(axis=1)  # calculate mean & assign the data
-
-            self.time_to_goal_history_based_data += mean_value
-
-        assert(type(self.time_to_goal_history_based_data) is np.ndarray)  # self-check
-
-
+        assert (type(self.time_to_goal_history_based_data) is np.ndarray)  # self-check
 
     def expand_state_with_costs(self, state_to_expand: GraphProblemState) -> Iterator[OperatorResult]:
         """
@@ -162,6 +149,5 @@ class MapProblem(GraphProblem):
 
         # TODO [Ex.9]: modify the returned value to indicate whether `state` is a final state.
         # You may use the problem's input parameters (stored as fields of this object by the constructor).
-        
+
         return state.junction_id == self.target_junction_id
-        

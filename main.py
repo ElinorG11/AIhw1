@@ -181,6 +181,7 @@ def map_problem_experiments():
     res = Astar.solve_problem(dist_map_problem)
     print(res)
 
+    
     # TODO [Ex.25]: 1. Call the function set_additional_history_based_data()
     #                   to set the additional history-based data in `map_problem`.
     #                   For more info see `problems/map_problem.py`.
