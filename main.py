@@ -149,17 +149,11 @@ def map_problem_experiments():
     #       solve the same `map_problem` with it and print the results (as before).
     # Notice: AStar constructor receives the heuristic *type* (ex: `MyHeuristicClass`),
     #         and NOT an instance of the heuristic (eg: not `MyHeuristicClass()`).
-    dist_map_problem.set_additional_history_based_data()
-
     a_star = AStar(NullHeuristic)
 
     res = a_star.solve_problem(dist_map_problem)
     print(res)
 
-    # save visualization of the path
-    file_path = os.path.join(Consts.IMAGES_PATH, 'UCS_path_time_based.png')
-    streets_map.visualize(path=res, file_path=file_path)
-    exit()  # TODO: remove!
 
     # TODO [Ex.18]: create an instance of `AStar` with the `TimeBasedAirDistHeuristic`,
     #       and use the default value for the heuristic_weight,  
