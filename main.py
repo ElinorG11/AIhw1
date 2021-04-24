@@ -186,10 +186,13 @@ def map_problem_experiments():
     #                   For more info see `problems/map_problem.py`.
     #               2. create an instance of `AStar` with the `HistoryBasedHeuristic`,
     #                   solve the same `map_problem` with it and print the results (as before).
+    """
     dist_map_problem.set_additional_history_based_data()
     a_star = AStar(HistoryBasedHeuristic)
     res = a_star.solve_problem(dist_map_problem)
     print(res)
+    """
+
 
     # Try using A*eps to improve the speed (#dev) with a non-acceptable heuristic.
     # TODO [Ex.29]: Create an instance of `AStarEpsilon` with the `ShortestPathsBasedHeuristic`.

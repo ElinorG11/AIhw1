@@ -95,9 +95,7 @@ class MapProblem(GraphProblem):
         # read the csv file
         df = pd.read_csv(history_4_days_target_file_path)
 
-        mean_value = pd.DataFrame.to_numpy(df.mean(axis=1))  # calculate mean & assign the data
-
-        self.time_to_goal_history_based_data = mean_value
+        self.time_to_goal_history_based_data = pd.DataFrame.to_numpy(df.mean(axis=1))  # calculate mean & assign data
 
         assert (type(self.time_to_goal_history_based_data) is np.ndarray)  # self-check
 
