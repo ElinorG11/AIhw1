@@ -197,7 +197,7 @@ def map_problem_experiments():
     #       Use focal_epsilon=0.23, and max_focal_size=40.
     #       Use within_focal_priority_function=within_focal_h_sum_priority_function. This function
     #        (defined just above) is internally using the `HistoryBasedHeuristic`.
-    dist_map_problem = MapProblem(streets_map, start_point, target_point, 'current_time')
+    # dist_map_problem = MapProblem(streets_map, start_point, target_point, 'current_time')
     astar_eps = AStarEpsilon(heuristic_function_type=ShortestPathsBasedHeuristic,focal_epsilon=0.23,max_focal_size=40,
                              within_focal_priority_function=within_focal_h_sum_priority_function)
     res = astar_eps.solve_problem(dist_map_problem)
