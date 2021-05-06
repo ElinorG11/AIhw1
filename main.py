@@ -104,8 +104,6 @@ def run_astar_for_weights_in_range(heuristic_type: HeuristicFunctionType, proble
             best_weights.append(weight)
     plot_distance_and_expanded_wrt_weight_figure(problem.name, best_weights, costs, expanded_states)
 
-    # raise NotImplementedError  # TODO: remove this line!
-
 
 # --------------------------------------------------------------------
 # ------------------------ StreetsMap Problem ------------------------
@@ -135,6 +133,7 @@ def toy_map_problem_experiment():
     # save visualization of the path
     file_path = os.path.join(Consts.IMAGES_PATH, 'UCS_path_distance_based.png')
     streets_map.visualize(path=res, file_path=file_path)
+
 
 def map_problem_experiments():
     print()
@@ -178,7 +177,7 @@ def map_problem_experiments():
 
     res = a_star.solve_problem(dist_map_problem)
     print(res)
-    #exit()  # TODO: remove!
+
 
     # TODO [Ex.20]:
     #  1. Complete the implementation of the function
@@ -190,7 +189,7 @@ def map_problem_experiments():
     #     with `TimeBasedAirDistHeuristic` and `map_problem`.
 
     run_astar_for_weights_in_range(heuristic_type=TimeBasedAirDistHeuristic, problem=dist_map_problem)
-    exit()  # TODO: remove!
+
 
     # TODO [Ex.24]: 1. Call the function set_additional_shortest_paths_based_data()
     #                   to set the additional shortest-paths-based data in `map_problem`.
@@ -224,7 +223,6 @@ def map_problem_experiments():
                              within_focal_priority_function=within_focal_h_sum_priority_function)
     res = astar_eps.solve_problem(dist_map_problem)
     print(res)
-    exit()  # TODO: remove!
 
 
 def run_all_experiments():
